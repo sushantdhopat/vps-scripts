@@ -1,0 +1,15 @@
+GET /api/users/me HTTP/2
+Host: api.cashrain.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/117.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: https://cashrain.com/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjY1MTksImlhdCI6MTY5NDU5NjE1NywiZXhwIjoxNjk3MTg4MTU3fQ.Rie5IrvQslH_1L3WqgageDmE-0BGSs2lUWQn0J9_MOw
+Origin: https://cashrain.com
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-site
+Te: trailers
+
+

@@ -1,0 +1,8 @@
+/Users/sushantdhopat/desktop/nuclei-templates//http/technologies/graylog/graylog-api-exposure.yaml
+/Users/sushantdhopat/desktop/nuclei-templates//http/technologies/graylog-api-browser.yaml
+/Users/sushantdhopat/desktop/nuclei-templates//http/technologies/fingerprinthub-web-fingerprints.yaml
+/Users/sushantdhopat/desktop/nuclei-templates//http/technologies/nexus-detect.yaml
+/Users/sushantdhopat/desktop/nuclei-templates//http/exposures/apis/jeecg-boot-swagger.yaml
+/Users/sushantdhopat/desktop/nuclei-templates//http/exposures/apis/swagger-api.yaml
+/Users/sushantdhopat/desktop/nuclei-templates//http/cves/2022/CVE-2022-0381.yaml
+/Users/sushantdhopat/desktop/nuclei-templates//http/cves/2019/CVE-2019-16332.yaml

@@ -36,3 +36,4 @@ while IFS= read -r domain; do
          -H "X-Forwarded-For: $x_forwarded_for_1"
  
 done < "$domain_file"
+

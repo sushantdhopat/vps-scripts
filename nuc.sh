@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 echo -e "\e[1;32m "
 target=$1
@@ -19,11 +19,11 @@ fi
 
 echo -e "\e[1;34m [+] performing nuclei scan on valid subdomains \e[0m"
 
-cat $target | nuclei -severity critical -t /root/nuclei-templates -o nuclei/critical
+cat $target | nuclei -severity critical -t /Users/sushantdhopat/Desktop/nuclei-templates -o nuclei/critical
 cat nuclei/critical | tr '[:upper:]' '[:lower:]'| anew | grep -v " "|grep -v "@" | grep "\." | wc -l
-cat $target | nuclei -severity high -t /root/nuclei-templates -o nuclei/high
+cat $target | nuclei -severity high -t /Users/sushantdhopat/Desktop/nuclei-templates -o nuclei/high
 cat nuclei/high | tr '[:upper:]' '[:lower:]'| anew | grep -v " "|grep -v "@" | grep "\." | wc -l
-cat $target | nuclei -severity medium -t /root/nuclei-templates -o nuclei/medium
+cat $target | nuclei -severity medium -t /Users/sushantdhopat/Desktop/nuclei-templates -o nuclei/medium
 cat nuclei/medium | tr '[:upper:]' '[:lower:]'| anew | grep -v " "|grep -v "@" | grep "\." | wc -l
-cat $target | nuclei -severity low -t /root/nuclei-templates -o nuclei/low
+cat $target | nuclei -severity low -t /Users/sushantdhopat/Desktop/nuclei-templates -o nuclei/low
 cat nuclei/low | tr '[:upper:]' '[:lower:]'| anew | grep -v " "|grep -v "@" | grep "\." | wc -l

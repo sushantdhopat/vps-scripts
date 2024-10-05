@@ -24,16 +24,14 @@ cat $target | waybackurls | tee wayback/wayback.txt
 katana -list $target | tee wayback/katana.txt
 gospider -S $target -o wayback/gospider.txt -c 10 -d 1 --other-source --include-subs --blacklist
 cat $target | hakrawler | tee wayback/hakrawler.txt
-cat wayback/gau.txt wayback/wayback.txt wayback/katana.txt wayback/gospider.txt wayback/hakrawler.txt >> wayback/urls.txt
-rm wayback/gau.txt wayback/wayback.txt wayback/katana.txt wayback/gospider.txt wayback/hakrawler.txt
+sed -E 's/^https?:\/\///' $target | tee wayback/forotx.txt
+bash /Users/sushantdhopat/desktop/scripts/otx.sh wayback/forotx.txt
+rm wayback/forotx.txt
+cat wayback/gau.txt wayback/wayback.txt wayback/katana.txt wayback/gospider.txt wayback/hakrawler.txt wayback/otxurls.txt >> wayback/urls.txt
+rm wayback/gau.txt wayback/wayback.txt wayback/katana.txt wayback/gospider.txt wayback/hakrawler.txt wayback/otxurls.txt
 cat wayback/urls.txt | sort -u | tee wayback/allurl.txt
 rm wayback/urls.txt
 cat wayback/allurl.txt | tr '[:upper:]' '[:lower:]'| anew | grep -v " "|grep -v "@" | grep "\." | wc -l
-sleep 5
-#api endpoint
-echo -e "Starting Collect Api-Endpoint"
-cat wayback/allurl.txt | grep -i "/api/" | sort -u | tee wayback/apiend.txt
-cat wayback/apiend.txt  | tr '[:upper:]' '[:lower:]'| anew | grep -v " "|grep -v "@" | grep "\." | wc -l
 sleep 5
 
 echo -e "Start Finding sensetive pdf"
@@ -63,6 +61,17 @@ sleep 5
 
 echo -e "Start Finding 200 status code for all urls"
 cat wayback/allurl.txt | httpx -status-code -mc 200 | awk '{print $1}' | tee wayback/allurlvalid.txt
+sleep 5
+
+#api endpoint
+echo -e "Starting Collect Api-Endpoint"
+cat wayback/allurlvalid.txt | grep -i "/api/" | sort -u | tee wayback/apiend.txt
+cat wayback/apiend.txt  | tr '[:upper:]' '[:lower:]'| anew | grep -v " "|grep -v "@" | grep "\." | wc -l
+sleep 5
+
+mkdir wayback/zipfiles
+echo -e "Start Finding zip files"
+grep '\.zip$' wayback/allurlvalid.txt | tee wayback/zipfiles/zips.txt
 sleep 5
 
 echo -e "Start Finding 200 status code for all end"
