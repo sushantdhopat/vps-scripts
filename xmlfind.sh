@@ -19,8 +19,8 @@ check_url_for_xml() {
     url=$1
     echo "Checking URL: $url"
 
-    # Sending a custom XML payload with distinct data
-    payload='<user><id>123</id><action>create</action></user>'
+    # Sending a custom XML payload with XML declaration and distinct data
+    payload='<?xml version="1.0" encoding="UTF-8"?><user><id>123</id><action>create</action></user>'
     response=$(curl -s -X POST -H "Content-Type: application/xml" -d "$payload" "$url")
 
     # Check for XML-specific error messages in the response (parser, malformed, etc.)
@@ -38,4 +38,3 @@ while IFS= read -r url; do
 done < "$urls_file"
 
 echo "Processing complete. Errors saved to $error_file and successes saved to $success_file"
-
